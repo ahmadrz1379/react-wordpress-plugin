@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
+import Layout from "./frontend/front-end";
 
+console.log("token outside of app", window.reactPluginData);
 const App = () => {
   const [count, setCount] = useState(0);
+  const [token, setToken] = useState(
+    localStorage.getItem("token") || window.reactPluginData.token || ""
+  );
+
   return (
     <div style={{ padding: "20px" }}>
-      <h1>React in WordPress</h1>
-      <p>Current Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increase</button>
-      <button onClick={() => setCount(count - 1)}>Decrease</button>
+      <Layout></Layout>
     </div>
   );
 };
